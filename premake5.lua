@@ -18,11 +18,14 @@ IncludeDir["Glad"] = "Hazel/vendor/Glad/include"
 IncludeDir["ImGui"] = "Hazel/vendor/imgui"
 IncludeDir["glm"] = "Hazel/vendor/glm"
 IncludeDir["stb_image"] = "Hazel/vendor/stb_image"
+IncludeDir["spdlog"] = "Hazel/vendor/spdlog/include"
+IncludeDir["OpenAL"] = "Hazel/vendor/OpenAL/include"
 
 group "Dependencies"
 	include "Hazel/vendor/GLFW"
 	include "Hazel/vendor/Glad"
 	include "Hazel/vendor/imgui"
+	include "Hazel/vendor/spdlog"
 
 group ""
 
@@ -47,6 +50,7 @@ project "Hazel"
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/OpenAL/Include/**.h"
 	}
 
 	defines
@@ -57,12 +61,13 @@ project "Hazel"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.OpenAL}"
 	}
 
 	links 
@@ -70,6 +75,8 @@ project "Hazel"
 		"GLFW",
 		"Glad",
 		"ImGui",
+		"spdlog",
+		"Hazel/vendor/OpenAL/libs/Win64/OpenAL32.lib",
 		"opengl32.lib"
 	}
 
@@ -116,10 +123,11 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Hazel/vendor/spdlog/include",
+		"%{IncludeDir.spdlog}",
 		"Hazel/src",
 		"Hazel/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.OpenAL}"
 	}
 
 	links

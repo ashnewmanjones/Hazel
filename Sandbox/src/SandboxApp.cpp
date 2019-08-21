@@ -13,6 +13,7 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 	{
+		m_Audio.reset(Hazel::Audio::Create());
 		m_VertexArray.reset(Hazel::VertexArray::Create());
 
 		float vertices[3 * 7] = {
@@ -245,6 +246,8 @@ private:
 	float m_CameraRotationSpeed = 180.0f;
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
+
+	Hazel::Ref<Hazel::Audio> m_Audio;
 };
 
 class Sandbox : public Hazel::Application

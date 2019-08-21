@@ -26,6 +26,10 @@
 #include "Hazel/Renderer/OrthographicCamera.h"
 // -----------------------------------
 
+// ---Audio---------------------------
+#include "Hazel/Audio/Audio.h"
+// -----------------------------------
+
 // ---Entry Point---------------------
 #include "Hazel/EntryPoint.h"
 // -----------------------------------
